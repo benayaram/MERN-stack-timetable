@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERN Stack Study Timetable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #F6C166, #E03D69);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+            width: 100%;
+            margin: 0;
+        }
+
+        .day-card {
+            background-color: #fff;
+            border: 1px solid #fff;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 15px;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            width: 300px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .day-card:hover {
+            transform: scale(1.02);
+            box-shadow: 15px 15px 15px rgb(0, 200, 255);
+            background-color: gold;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: #343a40;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: rgb(0, 191, 255);
+            text-decoration: none;
+        }
+
+        .mark-as-read-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .read {
+            color: #28a745;
+            /* Green color for read links */
+        }
+
+        /* Add this CSS to your existing styles */
+        .progress-bar {
+            background-color: #ccc;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 80%;
+            /* Adjust the width as needed */
+        }
+
+        .progress-fill {
+            background-color: #28a745;
+            /* Green color for filled part */
+            color: white;
+            width: 0;
+            /* Initially, the progress bar is empty */
+            height: 12px;
+            border-radius: 10px;
+            transition: width 0.8s ease-in-out;
+            /* Add smooth animation to the progress fill */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>MERN Stack Study Timetable</h1>
+    <!-- Add this outside of any <div class="day-card"> elements -->
+    <div class="overall-progress">
+        <h2>Overall Progress</h2>
+        <div class="progress-container">
+            <div class="progress-fill" style="width: 10%;"></div>
+        </div>
+    </div>
+
+    <!-- Day 1-2: JavaScript Fundamentals -->
+    <div class="day-card">
+        <h2>Day 1-2: JavaScript Fundamentals</h2>
+        <ul>
+            <li>Morning (2 hours): <a
+                    href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics"
+                    id="js-fundamentals">Variables, data types, and operators</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('js-fundamentals')">Mark as Read</button></li>
+            <li>Afternoon (2 hours): <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling"
+                    id="control-flow">Control flow (if statements, loops)</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('control-flow')">Mark as Read</button></li>
+            <li>Evening (2 hours): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+                    id="functions">Functions and objects</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('functions')">Mark as Read</button></li>
+        </ul>
+    </div>
+    <!-- Day 3-4: JavaScript Advanced Concepts -->
+    <div class="day-card">
+        <h2>Day 3-4: JavaScript Advanced Concepts</h2>
+        <ul>
+            <li>Morning (2 hours): <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                    id="advanced-arrays">Arrays and array methods</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('advanced-arrays')">Mark as Read</button></li>
+            <li>Afternoon (2 hours): <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla"
+                    id="es6-features">ES6 features (arrow functions, template literals, destructuring, etc.)</a> <button
+                    class="mark-as-read-button" onclick="toggleReadStatus('es6-features')">Mark as Read</button></li>
+            <li>Evening (2 hours): <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
+                    id="asynchronous-programming">Asynchronous programming (callbacks, promises)</a> <button
+                    class="mark-as-read-button" onclick="toggleReadStatus('asynchronous-programming')">Mark as
+                    Read</button></li>
+        </ul>
+    </div>
+
+    <!-- Day 5-6: Node.js -->
+    <div class="day-card">
+        <h2>Day 5-6: Node.js</h2>
+        <ul>
+            <li>Morning (2 hours): <a href="https://nodejs.org/en/docs/" id="nodejs-intro">Introduction to Node.js</a>
+                <button class="mark-as-read-button" onclick="toggleReadStatus('nodejs-intro')">Mark as Read</button>
+            </li>
+            <li>Afternoon (2 hours): <a href="https://nodejs.dev/learn/how-to-install-nodejs" id="nodejs-setup">Setting
+                    up Node.js environment</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('nodejs-setup')">Mark as Read</button></li>
+            <li>Evening (2 hours): Creating a simple server with <a
+                    href="https://expressjs.com/en/starter/installing.html" id="expressjs-server">Express.js</a> <button
+                    class="mark-as-read-button" onclick="toggleReadStatus('expressjs-server')">Mark as Read</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Day 7-8: MongoDB -->
+    <div class="day-card">
+        <h2>Day 7-8: MongoDB</h2>
+        <ul>
+            <li>Morning (2 hours): <a href="https://docs.mongodb.com/manual/introduction/"
+                    id="mongodb-intro">Introduction to MongoDB</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('mongodb-intro')">Mark as Read</button></li>
+            <li>Afternoon (2 hours): CRUD operations with MongoDB using <a href="https://mongoosejs.com/docs/index.html"
+                    id="mongoose-crud">Mongoose</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('mongoose-crud')">Mark as Read</button></li>
+            <li>Evening (2 hours): <a href="https://docs.mongodb.com/manual/core/data-modeling-introduction/"
+                    id="mongodb-schema">Schema design and relationships in MongoDB</a> <button
+                    class="mark-as-read-button" onclick="toggleReadStatus('mongodb-schema')">Mark as Read</button></li>
+        </ul>
+    </div>
+
+    <!-- Continue adding day cards for other topics -->
+    <!-- Day 9-10: React Basics -->
+    <div class="day-card">
+        <h2>Day 9-10: React Basics</h2>
+        <ul>
+            <li>Morning (2 hours): <a href="https://reactjs.org/docs/getting-started.html" id="react-intro">Introduction
+                    to React</a> <button class="mark-as-read-button" onclick="toggleReadStatus('react-intro')">Mark as
+                    Read</button></li>
+            <li>Afternoon (2 hours): <a href="https://reactjs.org/docs/introducing-jsx.html" id="jsx-intro">JSX</a>, and
+                <a href="https://reactjs.org/docs/components-and-props.html" id="react-components">components</a>
+                <button class="mark-as-read-button" onclick="toggleReadStatus('jsx-intro')">Mark as Read</button>
+                <button class="mark-as-read-button" onclick="toggleReadStatus('react-components')">Mark as Read</button>
+            </li>
+            <li>Evening (2 hours): Building a simple React app</li>
+        </ul>
+    </div>
+
+    <!-- Day 11-12: React Router and Styling -->
+    <div class="day-card">
+        <h2>Day 11-12: React Router and Styling</h2>
+        <ul>
+            <li>Morning (2 hours): <a href="https://reactrouter.com/web/guides/quick-start" id="react-router">React
+                    Router for routing in React</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('react-router')">Mark as Read</button></li>
+            <li>Afternoon (2 hours): Styling in React with <a href="https://reactjs.org/docs/faq-styling.html"
+                    id="react-styling">CSS</a>, <a href="https://styled-components.com/docs"
+                    id="styled-components">CSS-in-JS</a>, or <a href="https://styled-components.com/docs"
+                    id="styled-components">Styled Components</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('react-styling')">Mark as Read</button></li>
+            <li>Evening (2 hours): Enhancing your React app with routing and styling</li>
+        </ul>
+    </div>
+
+    <!-- Continue adding day cards for other topics -->
+    <!-- Day 13-14: API Integration -->
+    <div class="day-card">
+        <h2>Day 13-14: API Integration</h2>
+        <ul>
+            <li>Morning (2 hours): Making API requests with <a href="https://axios-http.com/docs/intro"
+                    id="api-axios">Axios</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+                    id="api-fetch">Fetch API</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('api-axios')">Mark as Read</button> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('api-fetch')">Mark as Read</button></li>
+            <li>Afternoon (2 hours): Consuming data from your Express.js API</li>
+            <li>Evening (2 hours): Integrating API data into your React app</li>
+        </ul>
+    </div>
+
+    <!-- Day 15-16: State Management (Optional) -->
+    <div class="day-card">
+        <h2>Day 15-16: State Management (Optional)</h2>
+        <ul>
+            <li>Morning (2 hours): Introduction to <a href="https://redux.js.org/introduction/getting-started"
+                    id="state-redux">Redux</a> or <a href="https://mobx.js.org/README.html" id="state-mobx">Mobx</a>
+                <button class="mark-as-read-button" onclick="toggleReadStatus('state-redux')">Mark as Read</button>
+                <button class="mark-as-read-button" onclick="toggleReadStatus('state-mobx')">Mark as Read</button>
+            </li>
+            <li>Afternoon (2 hours): Implementing state management in your React app</li>
+            <li>Evening (2 hours): Practice projects with state management</li>
+        </ul>
+    </div>
+
+    <!-- Continue adding day cards for other topics -->
+    <!-- Day 17-18: Authentication and Authorization (Optional) -->
+    <div class="day-card">
+        <h2>Day 17-18: Authentication and Authorization (Optional)</h2>
+        <ul>
+            <li>Morning (2 hours): JWT authentication concepts</li>
+            <li>Afternoon (2 hours): Implementing user authentication with <a href="http://www.passportjs.org/docs/"
+                    id="auth-passport">Passport.js</a> <button class="mark-as-read-button"
+                    onclick="toggleReadStatus('auth-passport')">Mark as Read</button></li>
+            <li>Evening (2 hours): Handling user authorization</li>
+        </ul>
+    </div>
+
+    <!-- Day 19-20: Deployment and Version Control -->
+    <div class="day-card">
+        <h2>Day 19-20: Deployment and Version Control</h2>
+        <ul>
+            <li>Morning (2 hours): Git and GitHub basics</li>
+            <li>Afternoon (2 hours): Deploying your MERN app to a hosting platform (e.g., <a
+                    href="https://devcenter.heroku.com/" id="deployment-heroku">Heroku</a>, <a
+                    href="https://www.netlify.com/" id="deployment-netlify">Netlify</a>) <button
+                    class="mark-as-read-button" onclick="toggleReadStatus('deployment-heroku')">Mark as Read</button>
+                <button class="mark-as-read-button" onclick="toggleReadStatus('deployment-netlify')">Mark as
+                    Read</button>
+            </li>
+            <li>Evening (2 hours): Setting up a custom domain (if applicable)</li>
+        </ul>
+    </div>
+<script>
+    // JavaScript function to toggle "Mark as Read" status and update progress bar
+function toggleReadStatus(conceptId) {
+    const conceptLink = document.getElementById(conceptId);
+    if (conceptLink) {
+        if (conceptLink.classList.contains('read')) {
+            conceptLink.classList.remove('read');
+            localStorage.setItem(conceptId, 'unread'); // Store as "unread"
+        } else {
+            conceptLink.classList.add('read');
+            localStorage.setItem(conceptId, 'read'); // Store as "read"
+        }
+
+        // Calculate and update the overall progress
+        const conceptIds = [
+            'js-fundamentals',
+            'control-flow',
+            'functions',
+            'arrays',
+            'es6-features',
+            'asynchronous-programming',
+            'node-introduction',
+            'node-environment-setup',
+            'express-js',
+            'mongodb-introduction',
+            'mongodb-crud',
+            'mongodb-schema-design',
+            'react-introduction',
+            'jsx-components-props',
+            'react-router',
+            'react-styling',
+            'api-requests',
+            'express-api-consumption',
+            'react-api-integration',
+            'state-management',
+            'authentication-concepts',
+            'user-authentication',
+            'user-authorization',
+            'git-github-basics',
+            'app-deployment',
+            'custom-domain-setup',
+            'continuous-learning',
+            'final-projects',
+            'project-presentation-portfolio',
+            'reflection-future-learning',
+            'advanced-topics'
+        ];
+        const completedCount = conceptIds.filter(id => localStorage.getItem(id) === 'read').length;
+        const totalCount = conceptIds.length;
+        const percentage = (completedCount / totalCount) * 100;
+
+        // Update the overall progress bar width
+        const overallProgressBar = document.querySelector('.overall-progress .progress-fill');
+        if (overallProgressBar) {
+            overallProgressBar.style.width = `${percentage}%`;
+        }
+    }
+}
+
+// Check localStorage for saved "Mark as Read" status and update overall progress bar
+document.addEventListener('DOMContentLoaded', function () {
+    const conceptIds = [
+        'js-fundamentals',
+        'control-flow',
+        'functions',
+        'arrays',
+        'es6-features',
+        'asynchronous-programming',
+        'node-introduction',
+        'node-environment-setup',
+        'express-js',
+        'mongodb-introduction',
+        'mongodb-crud',
+        'mongodb-schema-design',
+        'react-introduction',
+        'jsx-components-props',
+        'react-router',
+        'react-styling',
+        'api-requests',
+        'express-api-consumption',
+        'react-api-integration',
+        'state-management',
+        'authentication-concepts',
+        'user-authentication',
+        'user-authorization',
+        'git-github-basics',
+        'app-deployment',
+        'custom-domain-setup',
+        'continuous-learning',
+        'final-projects',
+        'project-presentation-portfolio',
+        'reflection-future-learning',
+        'advanced-topics'
+    ];
+
+    conceptIds.forEach(function (conceptId) {
+        const status = localStorage.getItem(conceptId);
+        if (status === 'read') {
+            const conceptLink = document.getElementById(conceptId);
+            if (conceptLink) {
+                conceptLink.classList.add('read');
+            }
+        }
+    });
+
+    // Calculate and update the overall progress bar
+    const completedCount = conceptIds.filter(id => localStorage.getItem(id) === 'read').length;
+    const totalCount = conceptIds.length;
+    const percentage = (completedCount / totalCount) * 100;
+    const overallProgressBar = document.querySelector('.overall-progress .progress-fill');
+    if (overallProgressBar) {
+        overallProgressBar.style.width = `${percentage}%`;
+    }
+});
+
+</script>
+</body>
+
+</html>
